@@ -1,6 +1,6 @@
 pandas
 scikit-learn
 fasttext
-numpy==1.21.2
+numpy==2.1.1
 streamlit
 openpyxl # For reading and writing Excel files
