@@ -41,13 +41,10 @@ def load_model(model_path):
 # Function for predictions
 def predict(model, queries):
     predictions = []
-    # for query in queries:
-    #     query_array = np.asarray([query])  # Ensure the query is in the correct format
-    #     prediction = model.predict(query_array[0])  # Predict on the array element
-    #     predictions.append(prediction[0][0].replace('__label__', ''))  # Clean up label
+    
     labels, confidences = model.predict(queries)
     for i in labels:
-        predictions.append(i)
+        predictions.append(i[0])
     return predictions
 
 # Streamlit app
