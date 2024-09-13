@@ -32,7 +32,8 @@ def pre_processing(dataframe):
 
 
 # Cache the loading of the fastText model to avoid reloading each time
-@st.cache_data(allow_output_mutation=True)
+# @st.cache_data(allow_output_mutation=True)
+@st.experimental_singleton
 def load_model(model_path):
     model = fasttext.load_model(model_path)
     return model
