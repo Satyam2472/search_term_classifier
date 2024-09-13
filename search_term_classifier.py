@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import fasttext
 import streamlit as st
+import numpy as np
 
 
 def delimiter_remover(text):
@@ -31,7 +32,7 @@ def pre_processing(dataframe):
 
 
 # Cache the loading of the fastText model to avoid reloading each time
-@st.cache(allow_output_mutation=True)
+@st.cache_data(allow_output_mutation=True)
 def load_model(model_path):
     model = fasttext.load_model(model_path)
     return model
@@ -40,7 +41,8 @@ def load_model(model_path):
 def predict(model, queries):
     predictions = []
     for query in queries:
-        prediction = model.predict(query)
+        query_array = np.asarray([query])  # Ensure the query is in the correct format
+        prediction = model.predict(query_array[0])  # Predict on the array element
         predictions.append(prediction[0][0].replace('__label__', ''))  # Clean up label
     return predictions
 

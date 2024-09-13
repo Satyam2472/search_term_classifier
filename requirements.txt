@@ -1,5 +1,6 @@
 pandas
 scikit-learn
 fasttext
+numpy
 streamlit
 openpyxl # For reading and writing Excel files
