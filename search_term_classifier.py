@@ -44,7 +44,7 @@ def predict(model, queries):
     
     labels, confidences = model.predict(queries)
     for i in labels:
-        predictions.append(i[0])
+        predictions.append(i[0][8:])
     return predictions
 
 # Streamlit app
